@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { app, db} from "./firebaseconfi"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const App = () => {
   const [data, setdata] = useState({
@@ -6,18 +9,17 @@ const App = () => {
     password : ""
   })
 
-  const handler = (e) =>{
-    setdata({...data, [e.target.name] : e.target.value})
-  }
-  const subhandler = (e) =>{
+  // Submit handler
+
+  const subhandler = async(e) =>{
     e.preventDefault();
-    console.log(data);
+    console.log();
   }
+
   return (
     <div>
       <form onSubmit={subhandler} >
-        <input type='text' name='email' onChange={handler} placeholder='email'  />
-        <input type='text' name='password' onChange={handler} placeholder='password' />
+        <input type='file'  onChange={(e)=> setdata(e.target.files[0])}   />
         <button>Submit</button>
       </form>
     </div>
