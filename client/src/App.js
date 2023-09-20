@@ -13,7 +13,7 @@ const App = () => {
 
   const subhandler = async(e) =>{
     e.preventDefault();
-    console.log();
+    console.log(data);
   }
 
   return (
