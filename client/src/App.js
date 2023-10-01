@@ -1,27 +1,25 @@
-import React, { useState } from 'react'
-import { app, db} from "./firebaseconfi"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
-  const [data, setdata] = useState({
-    email : "",
-    password : ""
-  })
 
-  // Submit handler
+  // const [data, setdata] = useState([])
 
-  const subhandler = async(e) =>{
-    e.preventDefault();
-    console.log(data);
-  }
+  // useEffect(()=>{
+  //     async function fetchdata(){
+  //       const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+  //       const dat  = await res.json()
+  //       setdata( dat)
+  //     }
+  //     fetchdata()
+  // },[])
 
+  // console.log(data);
+    
+  // // console.log(data.map( tod => console.log(tod)));
+  
   return (
     <div>
-      <form onSubmit={subhandler} >
-        <input type='file'  onChange={(e)=> setdata(e.target.files[0])}   />
-        <button>Submit</button>
-      </form>
+    <p>hai</p>
     </div>
   )
 }
