@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react'
+// import "./app.css"
 
 const App = () => {
 
-  // const [data, setdata] = useState([])
+  const [data, setdata] = useState([])
 
-  // useEffect(()=>{
-  //     async function fetchdata(){
-  //       const res = await fetch("https://jsonplaceholder.typicode.com/todos")
-  //       const dat  = await res.json()
-  //       setdata( dat)
-  //     }
-  //     fetchdata()
-  // },[])
+  useEffect(()=>{
+      async function fetchdata(){
+        const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+        const dat  = await res.json()
+        setdata(dat)
+      }
+      fetchdata()
+  },[])
 
-  // console.log(data);
-    
-  // // console.log(data.map( tod => console.log(tod)));
-  
+
   return (
-    <div>
-    <p>hai</p>
+    <div className='first' >
+      { data.map(tod =>(
+        <div>
+          <p>{tod.userId}</p>
+          <p key={tod.id} >{tod.id}. {tod.title}</p>
+          <button onClick={()=>{
+            setdata( data.filter( to => to.id !== tod.id) )
+          }}>delete</button>
+        </div>
+      ))}
     </div>
   )
 }
