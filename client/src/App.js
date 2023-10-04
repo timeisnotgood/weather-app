@@ -16,15 +16,19 @@ const App = () => {
       fetchdata()
   },[])
 
+  useEffect(()=>{
+    serfilter(data.filter( tod => tod.userId == controller))
+  },[controller])
+
   console.log(controller);
+  console.log(filter);
   
   
   // console.log(ne);
   return (
     <div className='first' >
           <select onChange={(e)=>{
-            setcontroller( p => e.target.value)
-            serfilter(data.filter( tod => tod.userId == controller))
+            setcontroller(e.target.value)            
           }} >
             <option  key={1} value={1} >User-1</option>
             <option  key={2} value={2} >User-2</option>
@@ -39,7 +43,10 @@ const App = () => {
           </select>
           <div>
             {filter.map( to => 
-            <p key={to.id} >{to.title}</p>
+            <div key={to.id} >
+            <p >{to.title}</p>
+            <button onClick={()=>serfilter(filter.filter( fil => fil.id !== to.id))} >delete</button>
+            </div>
             )}
           </div>
     </div>
