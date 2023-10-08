@@ -8,9 +8,17 @@ const Register = () => {
         password : ""
     })
 
-    const subhandler =(e)=>{
+    const subhandler =async(e)=>{
         e.preventDefault();
-        console.log(detail);
+        const data = fetch("http://localhost:5001/user/register", {
+            method:"POST",
+            headers :{
+                "Content-Type": "application/json",
+            },
+            body : detail
+        })
+        const res = await (await data).json()
+        console.log(res);
     }
 
     const inphandler =(e)=>{
@@ -25,7 +33,7 @@ const Register = () => {
             <input type='text' name='username' onChange={inphandler} />
             <label>Email</label>
             <input type='text' name='email' onChange={inphandler} />
-            <label>Passowrd</label>
+            <label>Passoword</label>
             <input type='text' name='password' onChange={inphandler} />
             <button>Submit</button>
         </form>
