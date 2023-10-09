@@ -15,7 +15,7 @@ const Register = () => {
             headers :{
                 "Content-Type": "application/json",
             },
-            body : detail
+            body : JSON.stringify(detail)
         })
         const res = await (await data).json()
         console.log(res);
