@@ -34,7 +34,7 @@ const loginuser = asynchandler(async(req, res)=>{
 
     const filter = await use.find({email})
     console.log(filter[0].username);
-    const token = await jwt.sign({
+    const token =  jwt.sign({
         user :{
             username : filter[0].username,
             email : filter[0].email,

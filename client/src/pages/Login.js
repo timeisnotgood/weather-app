@@ -7,9 +7,18 @@ const Login = () => {
         password : ""
     })
 
-    const subhandler =(e)=>{
+    const subhandler =async(e)=>{
         e.preventDefault();
-        console.log(detail);
+
+        const data = await fetch(`http://localhost:5001/user/login`, {
+            method:"post",
+            headers :{
+                "Content-type" : "application/json"
+            },
+            body : JSON.stringify(detail)
+        })
+        const res = await data.json()
+        console.log(res);
     }
 
     const inphandler =(e)=>{
