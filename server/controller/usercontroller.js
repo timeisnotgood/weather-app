@@ -19,7 +19,7 @@ const registeruser = asynchandler(async(req, res)=>{
         email,
         password : hashed
     })
-    res.status(200).json({"message" : "User created Successfully!!.."})
+    res.status(200).json({username:data.username,id : data._id})
 })
 
 // @ post users
