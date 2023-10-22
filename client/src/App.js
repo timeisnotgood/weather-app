@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Tod } from './pages/Tod'
-import { Home } from './Home'
+import Home from "./pages/Home"
+import {Tod} from "./components/Tod"
+import {Weather} from "./components/Weather"
 import { Navbar } from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import { Weather } from './pages/Weather'
 // import "./app.css"
 
 const App = () => {
