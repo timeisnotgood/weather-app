@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import {UserProvider} from "../components/UserContext"
-import App from '../App'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -24,17 +22,19 @@ const Login = () => {
         })
         const res = await data.json()
         const token = res.accesstoken;
+        localStorage.setItem("token",JSON.stringify(token))
 
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const payload = JSON.parse(atob(base64));
-        const currentuser = payload.user
-        // console.log(payload.user);
-        setloggedin(payload.user)
-        if(currentuser) navigate('/')
-
+        if(token) navigate('/')
+        // const base64Url = token.split('.')[1];
+        // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        // const payload = JSON.parse(atob(base64));
+        // const currentuser = payload.user
+        // setloggedin(payload.user)
     }
-    // console.log(loggedin, "From userstatas");
+
+    useEffect(()=>{
+        
+    },[])
 
     const inphandler =(e)=>{
         setdetail({...detail, [e.target.name] : e.target.value})
@@ -49,9 +49,6 @@ const Login = () => {
             <label>Password</label>
             <input type='text' name='password' onChange={inphandler} />
             <button>Submit</button>
-            {/* <UserProvider value={loggedin} >
-                <App/>
-            </UserProvider> */}
         </form>
     </div>
   )
