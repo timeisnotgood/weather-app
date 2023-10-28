@@ -32,9 +32,6 @@ const Login = () => {
         // setloggedin(payload.user)
     }
 
-    useEffect(()=>{
-        
-    },[])
 
     const inphandler =(e)=>{
         setdetail({...detail, [e.target.name] : e.target.value})

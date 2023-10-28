@@ -5,16 +5,12 @@ export const Navbar = () => {
 
   const [loggedin, setloggedin] = useState(false)
   
-  useEffect(()=>{
-    const checker = () =>{
-      const data = localStorage.getItem('token')
+    const data = localStorage.getItem('token')
       console.log(data);
-      if (data) {
-        setloggedin(true)
-      }
-    }
-  checker()
-  },[])
+
+  useEffect(()=>{
+      if(data) setloggedin(true)
+  },[data])
   
   return (
     <div>
@@ -23,14 +19,10 @@ export const Navbar = () => {
           localStorage.removeItem('token')
           setloggedin(false)
         }} >Logout</Link> 
-        :
-        <div>
+        :<div>
           <Link to={"/register"} >Register</Link>
           <Link to={"/login"} >Login</Link>
-        </div>
-        
-         }
-        
+        </div>}
     </div>
   )
 }
