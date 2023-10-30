@@ -6,11 +6,22 @@ export const Navbar = () => {
   const [loggedin, setloggedin] = useState(false)
   
     const data = localStorage.getItem('token')
-      console.log(data);
 
-  useEffect(()=>{
-      if(data) setloggedin(true)
-  },[data])
+
+  if(localStorage.getItem('token')){
+    setloggedin(true)
+  }
+
+  // useEffect(()=>{
+  //   function setter(){
+  //     const data = localStorage.getItem('token')
+  //     if(data) setloggedin(true)
+  //     console.log(data);
+  //   }
+  //   setter()
+  // })
+
+  console.log(loggedin);
   
   return (
     <div>
