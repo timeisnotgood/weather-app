@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export const Navbar = () => {
+export const Navbar = ({response}) => {
 
   const [loggedin, setloggedin] = useState(false)
   
-
+  console.log(response);
   useEffect(()=>{
-    function setter(){
-      const data = localStorage.getItem('token')
-      console.log(data);
-    }
-    setter()
+    function logger(){
+      if(response == true){
+        setloggedin(true)
+       }
+     }
+     logger()
   })
+
+ 
   
   return (
     <div>

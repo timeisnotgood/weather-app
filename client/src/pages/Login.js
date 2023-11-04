@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setresponse}) => {
     const navigate = useNavigate();
     const [detail, setdetail] = useState({
         email : "",
         password : ""
     })
 
-    const [loggedin, setloggedin] = useState()
 
     const subhandler =async(e)=>{
         e.preventDefault();
@@ -23,6 +22,15 @@ const Login = () => {
         const res = await data.json()
         const token = res.accesstoken;
         localStorage.setItem("token",JSON.stringify(token))
+
+        console.log()
+        
+        if(localStorage.key("token") == 'accesstoken'){
+            setresponse(true)
+        }else{
+            setresponse(false)
+        }
+
 
         if(token) navigate('/')
         // const base64Url = token.split('.')[1];
