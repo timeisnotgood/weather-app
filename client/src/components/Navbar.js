@@ -20,10 +20,7 @@ export const Navbar = ({response}) => {
   return (
     <div>
         <Link to={"/"} >Home</Link>
-        {loggedin ? <Link onClick={()=>{
-          localStorage.removeItem('token')
-          setloggedin(false)
-        }} >Logout</Link> 
+        {loggedin ? <Link>Logout</Link> 
         :<div>
           <Link to={"/register"} >Register</Link>
           <Link to={"/login"} >Login</Link>

@@ -25,11 +25,7 @@ const Login = ({setresponse}) => {
 
         console.log()
         
-        if(localStorage.key("token") == 'accesstoken'){
-            setresponse(true)
-        }else{
-            setresponse(false)
-        }
+        localStorage.getItem
 
 
         if(token) navigate('/')
