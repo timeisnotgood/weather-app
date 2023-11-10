@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const Login = ({setresponse}) => {
+const Login = () => {
     const navigate = useNavigate();
     const [detail, setdetail] = useState({
         email : "",
@@ -22,18 +22,8 @@ const Login = ({setresponse}) => {
         const res = await data.json()
         const token = res.accesstoken;
         localStorage.setItem("token",JSON.stringify(token))
-
-        console.log()
         
-        localStorage.getItem
-
-
         if(token) navigate('/')
-        // const base64Url = token.split('.')[1];
-        // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        // const payload = JSON.parse(atob(base64));
-        // const currentuser = payload.user
-        // setloggedin(payload.user)
     }
 
 

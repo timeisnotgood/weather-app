@@ -9,17 +9,14 @@ import Login from './pages/Login'
 // import "./app.css"
 
 const App = () => {
-
-  const [response, setresponse] = useState(false)
-  console.log(response);
   
   return (
     <div>
-    <Navbar response={response}/>
+    <Navbar/>
     <Routes>
       <Route path='/' exact element={<Home/>} />
       <Route path='/Register' element={<Register/>} />
-      <Route path='/login' element={<Login setresponse={setresponse} />} />
+      <Route path='/login' element={<Login/>} />
       <Route path='/todo' element={<Tod/>} />
       <Route path='/weather' element={<Weather/>} />
     </Routes>
