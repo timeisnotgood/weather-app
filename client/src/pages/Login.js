@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setter}) => {
     const navigate = useNavigate();
     const [detail, setdetail] = useState({
         email : "",
@@ -22,7 +22,7 @@ const Login = () => {
         const res = await data.json()
         const token = res.accesstoken;
         localStorage.setItem("token",JSON.stringify(token))
-        
+        setter(true)
         if(token) navigate('/')
     }
 

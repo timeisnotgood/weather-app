@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Register = () => {
 
+const Register = ({setter}) => {
+
+    const navigate = useNavigate()
     const [detail, setdetail] = useState({
         username : "",
         email : "",
@@ -19,6 +22,7 @@ const Register = () => {
         })
         const res = await (await data).json()
         console.log(res);
+        navigate('/login')
     }
 
     const inphandler =(e)=>{

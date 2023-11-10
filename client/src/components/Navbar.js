@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Navbar = () => {
+export const Navbar = ({setter, loggedin}) => {
+
   const [user, setuser] = useState(null);
-  const [loggedin, setloggedin] = useState(false);
+  const [logged, setlogged] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -16,23 +17,24 @@ export const Navbar = () => {
         const currentuser = payload.user;
 
         setuser(currentuser);
-        setloggedin(true);
+        // setlogged(true);
       } catch (error) {
         console.error('Error decoding token:', error);
         setuser(null);
-        setloggedin(false);
+        // setloggedin(false);
       }
     } else {
       setuser(null);
-      setloggedin(false);
+      // setloggedin(false);
     }
   }, [localStorage.getItem('token')]);
+  
 
   const logouthandler = () => {
     localStorage.removeItem('token');
-    setuser(null);
-    setloggedin(false);
+    setter(false)        
   };
+  
 
   console.log(user);
 
