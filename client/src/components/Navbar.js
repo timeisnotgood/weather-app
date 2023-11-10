@@ -1,39 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Authcontext } from '../context/Usercontext';
 
-export const Navbar = ({setter, loggedin}) => {
+export const Navbar = () => {
 
-  const [user, setuser] = useState(null);
-  const [logged, setlogged] = useState(false);
+  const {loggedin, logout, user} = useContext(Authcontext)
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
+  // const [user, setuser] = useState(null);
+  // const [logged, setlogged] = useState(false);
 
-    if (token) {
-      try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const payload = JSON.parse(atob(base64));
-        const currentuser = payload.user;
+  // // useEffect to get token
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
 
-        setuser(currentuser);
-        // setlogged(true);
-      } catch (error) {
-        console.error('Error decoding token:', error);
-        setuser(null);
-        // setloggedin(false);
-      }
-    } else {
-      setuser(null);
-      // setloggedin(false);
-    }
-  }, [localStorage.getItem('token')]);
-  
+  //   if (token) {
+  //     try {
+  //       const base64Url = token.split('.')[1];
+  //       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  //       const payload = JSON.parse(atob(base64));
+  //       const currentuser = payload.user;
 
-  const logouthandler = () => {
-    localStorage.removeItem('token');
-    setter(false)        
-  };
+  //       setuser(currentuser);
+  //     } catch (error) {
+  //       console.error('Error decoding token:', error);
+  //       setuser(null);
+  //     }
+  //   } else {
+  //     setuser(null);
+  //   }
+  // }, [localStorage.getItem('token')]);
+
+
+  // //logout handler to remove handler
+  // const logouthandler = () => {
+  //   localStorage.removeItem('token');
+  //   setter(false)        
+  // };
   
 
   console.log(user);
@@ -42,7 +44,7 @@ export const Navbar = ({setter, loggedin}) => {
     <div>
       <div >Home {user && user.username}</div>
       {loggedin ? (
-        <button onClick={logouthandler}>Logout</button>
+        <button onClick={logout}>Logout</button>
       ) : (
         <div>
           <Link to="/register">Register</Link>

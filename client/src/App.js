@@ -6,24 +6,28 @@ import {Weather} from "./components/Weather"
 import { Navbar } from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import { Usercontext } from './context/Usercontext'
 // import "./app.css"
 
 const App = () => {
 
-  const [loggedin, setloggedin] = useState()
+  // const [loggedin, setloggedin] = useState()
 
-  const setter = (value) =>{
-    setloggedin(value)
-  }
+  // const setter = (value) =>{
+  //   setloggedin(value)
+  // }
   
   return (
     <div>
-    <Navbar loggedin={loggedin} setter={setter} />
-    <Routes>
-      <Route path='/' exact element={<Home/>} />
-      <Route path='/Register' element={<Register setter = {setter} />} />
-      <Route path='/login' element={<Login setter = {setter} />} />
-    </Routes>
+    <Usercontext>
+    <Navbar  />
+      <Routes>
+        <Route path='/' exact element={<Home/>} />
+        <Route path='/Register' element={<Register  />} />
+        <Route path='/login' element={<Login  />} />
+      </Routes>
+    </Usercontext>
+    
     </div>
   )
 }

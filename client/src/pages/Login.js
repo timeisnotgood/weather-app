@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom";
+import { Authcontext } from '../context/Usercontext';
 
-const Login = ({setter}) => {
+const Login = () => {
+
+    const {login} = useContext(Authcontext)
     const navigate = useNavigate();
     const [detail, setdetail] = useState({
         email : "",
@@ -21,8 +24,9 @@ const Login = ({setter}) => {
         })
         const res = await data.json()
         const token = res.accesstoken;
-        localStorage.setItem("token",JSON.stringify(token))
-        setter(true)
+        login(token)
+        // localStorage.setItem("token",JSON.stringify(token))
+        // setter(true)
         if(token) navigate('/')
     }
 
