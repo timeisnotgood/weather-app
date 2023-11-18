@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const todoschema = mongoose.Schema({
-    id : {
+    user_id : {
         type : Number,
         require : [true, "Id is mandatory to store a to-do"]
     },
