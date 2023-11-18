@@ -8,7 +8,8 @@ const db = require("./lib/db")
 const port = process.env.PORT || 5001
 app.use(cors())
 app.use(express.json())
-app.use('/user', require("./routes/routes"))
+app.use('/user', require("./routes/userroutes"))
+app.use('/todo', require("./routes/todorouter"))
 
 db()
 
