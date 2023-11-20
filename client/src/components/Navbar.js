@@ -10,7 +10,7 @@ export const Navbar = () => {
   // const [logged, setlogged] = useState(false);
 
   // // useEffect to get token
-  // useEffect(() => {
+  // useEffect(() => { 
   //   const token = localStorage.getItem('token');
 
   //   if (token) {

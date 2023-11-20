@@ -1,53 +1,57 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { Authcontext } from '../context/Usercontext';
 
 
 export const Tod = () => {
 
-    const [data, setdata] = useState([])
-    const [filter, setfilter] = useState([])
-    const [controller, setcontroller] = useState(1)
-    
-
-  useEffect(()=>{
-      async function fetchdata(){
-        const res = await fetch("https://jsonplaceholder.typicode.com/todos")
-        const dat  = await res.json()
-        setdata(dat)
-      }
-      fetchdata()
-  },[])
-
-
-  useEffect(()=>{
-    setfilter(data.filter( tod => tod.userId == controller))
-  },[controller])
-
-  console.log(controller);
-  console.log(data.filter( tod => tod.userId == controller));
+  const {loggedin, logout, user} = useContext(Authcontext)
+  const [gettodo, setgettodo] = useState({})
+  const [todo, settodo] = useState([])
   
+  // console.log(user.id);
+
+  // useEffect(()=>{
+  //   async function usertodo(){
+  //     const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
+  //     const data = await res.json()
+  //     settodo(data)
+  //     console.log(todo);
+  //   }
+  //   usertodo();
+  // },[gettodo])
+
+  const submithandler = async(e) =>{
+    e.preventDefault();
+    console.log(gettodo)
+    // const res = await fetch(`http://localhost:5001/todo/create/${user.id}`,{
+    //   method : "post",
+    //   headers:{
+    //     "content-type" : "application/json"
+    //   },
+    //   body:JSON.stringify(todo)
+    // })
+
+    // const data = await res.json()
+    // console.log(data);
+  }
+
   return (
     <div className='first' >
-        <select onChange={(e)=>{
-            setcontroller(e.target.value)            
-            }} >
-            <option  key={1} value={1} >User-1</option>
-            <option  key={2} value={2} >User-2</option>
-            <option  key={3} value={3} >User-3</option>
-            <option  key={4} value={4} >User-4</option>
-            <option  key={5} value={5} >User-5</option>
-            <option  key={6} value={6} >User-6</option>
-            <option  key={7} value={7} >User-7</option>
-            <option  key={8} value={8} >User-8</option>
-            <option  key={9} value={9} >User-9</option>
-            <option  key={10} value={10} >User-10</option>
-        </select>
         <div>
-            {filter.map( to => 
-            <div key={to.id} >
-                <p >{to.title}</p>
-                <button onClick={()=>setfilter(filter.filter( fil => fil.id !== to.id))} >delete</button>
-            </div>
-            )}
+          <form onSubmit={submithandler} >
+            <input type='text' placeholder='Enter to-do' name='todo' onChange={(e)=>{setgettodo({...gettodo, [e.target.name] : e.target.value})}} />
+            <button>onSubmit</button>
+          </form>
+        </div>
+        <div className='todo_list'>
+          <ul>
+            {todo.map( to =>(
+              <li key={to._id} >
+              {to.todo}
+              <button>Delete</button>
+              </li>
+            ) )}
+          </ul>
         </div>
     </div>
   )
