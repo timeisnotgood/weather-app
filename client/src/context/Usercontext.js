@@ -12,7 +12,9 @@ const Usercontext = ({children}) => {
 
 
     const login = (value) =>{
-        localStorage.setItem('token', JSON.stringify(value))
+      if (!localStorage.getItem('token') || JSON.parse(localStorage.getItem('token').length === 0)) {
+          localStorage.setItem('token', JSON.stringify(value))
+        }
         const token = localStorage.getItem('token')
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

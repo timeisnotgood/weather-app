@@ -1,0 +1,43 @@
+
+
+.navbar{
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    border-radius: 6px;
+    color: black;
+    border-bottom: 1px solid grey;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+.userout{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.userin{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.btn{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.register{
+    text-decoration: none;
+    color: black;
+}
+
+.login{
+    text-decoration: none;
+    color: black;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Authcontext } from '../context/Usercontext';
+import "../components/css/nav.css"
 
 export const Navbar = () => {
 
@@ -41,14 +42,17 @@ export const Navbar = () => {
   console.log(user);
 
   return (
-    <div>
-      <div >Navbar {user && user.username}</div>
+    <div className='navbar' >
+      <div >Navbar</div>
       {loggedin ? (
-        <button onClick={logout}>Logout</button>
+        <div className='userin' >
+          {user && user.username}
+          <button className='btn' onClick={logout}>Logout</button>
+        </div>
       ) : (
-        <div>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
+        <div className='userout' >
+          <Link to="/register" className='register' >Register</Link>
+          <Link to="/login" className='login' >Login</Link>
         </div>
       )}
     </div>

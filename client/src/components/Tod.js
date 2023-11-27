@@ -10,15 +10,7 @@ export const Tod = () => {
   
   // console.log(user.id);
 
-  useEffect(()=>{
-    async function usertodo(){
-      const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
-      const data = await res.json()
-      settodo(data)
-      console.log(todo);
-    }
-    usertodo();
-  },[gettodo])
+
 
   const submithandler = async(e) =>{
     e.preventDefault();
@@ -34,6 +26,16 @@ export const Tod = () => {
     const data = await res.json()
     console.log(data);
   }
+
+  useEffect(()=>{
+    async function usertodo(){
+      const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
+      const data = await res.json()
+      settodo(data)
+      console.log(todo);
+    }
+    usertodo();
+  },[submithandler])
 
   return (
     <div className='first' >
