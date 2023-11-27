@@ -10,29 +10,29 @@ export const Tod = () => {
   
   // console.log(user.id);
 
-  // useEffect(()=>{
-  //   async function usertodo(){
-  //     const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
-  //     const data = await res.json()
-  //     settodo(data)
-  //     console.log(todo);
-  //   }
-  //   usertodo();
-  // },[gettodo])
+  useEffect(()=>{
+    async function usertodo(){
+      const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
+      const data = await res.json()
+      settodo(data)
+      console.log(todo);
+    }
+    usertodo();
+  },[gettodo])
 
   const submithandler = async(e) =>{
     e.preventDefault();
     console.log(gettodo)
-    // const res = await fetch(`http://localhost:5001/todo/create/${user.id}`,{
-    //   method : "post",
-    //   headers:{
-    //     "content-type" : "application/json"
-    //   },
-    //   body:JSON.stringify(todo)
-    // })
+    const res = await fetch(`http://localhost:5001/todo/create/${user.id}`,{
+      method : "post",
+      headers:{
+        "content-type" : "application/json"
+      },
+      body:JSON.stringify(gettodo)
+    })
 
-    // const data = await res.json()
-    // console.log(data);
+    const data = await res.json()
+    console.log(data);
   }
 
   return (

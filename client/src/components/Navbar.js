@@ -42,7 +42,7 @@ export const Navbar = () => {
 
   return (
     <div>
-      <div >Home {user && user.username}</div>
+      <div >Navbar {user && user.username}</div>
       {loggedin ? (
         <button onClick={logout}>Logout</button>
       ) : (

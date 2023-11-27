@@ -16,13 +16,14 @@ const App = () => {
   // const setter = (value) =>{
   //   setloggedin(value)
   // }
-
+ 
   return (
     <div>
     <Usercontext>
     <Navbar  />
       <Routes>
-        <Route path='/' exact element={<Home/>} />
+        <Route path='/' />
+        <Route path='/home' exact element={<Home/>} />
         <Route path='/Register' element={<Register  />} />
         <Route path='/login' element={<Login  />} />
         <Route path='/todo' element={<Tod/>} />

@@ -27,7 +27,7 @@ const Login = () => {
         login(token)
         // localStorage.setItem("token",JSON.stringify(token))
         // setter(true)
-        if(token) navigate('/')
+        if(token) navigate('/home')
     }
 
 
