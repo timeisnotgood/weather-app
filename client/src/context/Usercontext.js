@@ -10,7 +10,7 @@ const Usercontext = ({children}) => {
     const navigate = useNavigate() 
     const [user, setuser] = useState(null)
     const [loggedin, setloggedin] = useState(false)
-    const [token, settoken] = useState(null)
+    const [token, settoken] = useState(localStorage.getItem('token'))
 
     useEffect(() => {
       const storedToken = localStorage.getItem('token');
