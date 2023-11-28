@@ -5,7 +5,7 @@ import "../components/css/nav.css"
 
 export const Navbar = () => {
 
-  const {loggedin, logout, user} = useContext(Authcontext)
+  const {loggedin, logout, user} = useContext(Authcontext)        
 
   // const [user, setuser] = useState(null);
   // const [logged, setlogged] = useState(false);
