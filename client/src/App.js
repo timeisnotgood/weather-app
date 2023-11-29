@@ -20,7 +20,7 @@ const App = () => {
   // }
  
   return (
-    <div>
+    <div style={{height : "100vh", padding:"0px"}} >
     <Usercontext>
     <Navbar  />
       <Routes>

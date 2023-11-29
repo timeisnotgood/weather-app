@@ -9,7 +9,7 @@ export const Navbar = () => {
 
   return (
     <div className='navbar' >
-      <div >Navbar</div>
+      <div >To - <samp style={{fontWeight:"500", fontSize:"17px", color:"rgba(255, 255, 255, 0.473)"}} >We</samp></div>
       {loggedin ? (
         <div className='userin' >
           {user && user.username}
