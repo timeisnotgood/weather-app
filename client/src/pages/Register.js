@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import "./css/Login.css"
 
 
 const Register = ({setter}) => {
@@ -30,17 +31,19 @@ const Register = ({setter}) => {
     }
 
   return (
-    <div>
-        <h3>Register Here !</h3>
-        <form onSubmit={subhandler} >
-            <label>Username</label>
-            <input type='text' name='username' onChange={inphandler} />
-            <label>Email</label>
-            <input type='text' name='email' onChange={inphandler} />
-            <label>Passoword</label>
-            <input type='text' name='password' onChange={inphandler} />
-            <button>Submit</button>
-        </form>
+    <div className='main'  >
+        <div className='card' style={{height:"370px"}} >
+            <h3 className='nead' >Register Here !</h3>
+            <form onSubmit={subhandler} className='form' >
+                <label>Username</label>
+                <input type='text' name='username' onChange={inphandler} />
+                <label>Email</label>
+                <input type='text' name='email' onChange={inphandler} />
+                <label>Passoword</label>
+                <input type='text' name='password' onChange={inphandler} />
+                <button>Submit</button>
+            </form>
+        </div>
     </div>
   )
 }

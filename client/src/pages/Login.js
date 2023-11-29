@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Authcontext } from '../context/Usercontext';
+import "./css/Login.css"
 
 const Login = () => {
 
@@ -36,15 +37,17 @@ const Login = () => {
     }
 
   return (
-    <div>
-        <h3>Login</h3>
-        <form onSubmit={subhandler} >
-            <label>Email</label>
-            <input type='text' name='email' onChange={inphandler} />
-            <label>Password</label>
-            <input type='text' name='password' onChange={inphandler} />
-            <button>Submit</button>
-        </form>
+    <div className='main' >
+        <div className='card' >
+            <h3 className='head' >Login</h3>
+            <form onSubmit={subhandler} className='form' >
+                <label>Email</label>
+                <input type='text' name='email' onChange={inphandler} />
+                <label>Password</label>
+                <input type='text' name='password' onChange={inphandler} />
+                <button>Submit</button>
+            </form>
+        </div>
     </div>
   )
 }
