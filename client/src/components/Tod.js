@@ -4,17 +4,37 @@ import { Authcontext } from '../context/Usercontext';
 
 export const Tod = () => {
 
-  const {loggedin, logout, user} = useContext(Authcontext)
+  function getter(){
+      const token =  localStorage.getItem("token")
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const payload = JSON.parse(atob(base64));
+      const currentuser = payload.user;
+      
+      return currentuser
+  }
+
+  const [user, setuser] = useState(getter())
   const [gettodo, setgettodo] = useState({})
   const [todo, settodo] = useState([])
-  
-  // console.log(user.id);
 
+  useEffect(()=>{
+      
+  },[])
 
+  useEffect(()=>{
+    if(user){
+      async function getter(){
+        const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
+        const data = await res.json()
+        settodo(data)
+      }
+      getter()
+    }
+  },[user])
 
   const submithandler = async(e) =>{
     e.preventDefault();
-    console.log(gettodo)
     const res = await fetch(`http://localhost:5001/todo/create/${user.id}`,{
       method : "post",
       headers:{
@@ -24,18 +44,8 @@ export const Tod = () => {
     })
 
     const data = await res.json()
-    console.log(data);
+    settodo([...todo, data])
   }
-
-  useEffect(()=>{
-    async function usertodo(){
-      const res = await fetch(`http://localhost:5001/todo/get/${user.id}`)
-      const data = await res.json()
-      settodo(data)
-      console.log(todo);
-    }
-    usertodo();
-  },[submithandler])
 
   return (
     <div className='first' >

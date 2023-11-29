@@ -7,7 +7,8 @@ import { Navbar } from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import { Usercontext } from './context/Usercontext'
-// import Prac from './Prac'
+import Prac from './Prac'
+import About from './pages/About'
 // import "./app.css"
 
 const App = () => {
@@ -23,8 +24,8 @@ const App = () => {
     <Usercontext>
     <Navbar  />
       <Routes>
-        <Route path='/' />
-        <Route path='/home' exact element={<Home/>} />
+        <Route path='/' exact element={<About/>} />
+        <Route path='/home'  element={<Home/>} />
         <Route path='/Register' element={<Register  />} />
         <Route path='/login' element={<Login  />} />
         <Route path='/todo' element={<Tod/>} />
