@@ -3,23 +3,33 @@ import { useNavigate } from 'react-router-dom';
 
 const Authcontext = createContext();
 
+console.log("one");
 
+const getter = () =>{
+  const tok = localStorage.getItem('token')
+  return tok
+}
 
 const Usercontext = ({children}) => {
 
     const navigate = useNavigate() 
     const [user, setuser] = useState(null)
     const [loggedin, setloggedin] = useState(false)
-    const [token, settoken] = useState(localStorage.getItem('token'))
+    const [token, settoken] = useState(getter())
 
     useEffect(() => {
-      const storedToken = localStorage.getItem('token');
-      if (storedToken) {
-        settoken(storedToken);
+      if(loggedin){
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const payload = JSON.parse(atob(base64));
+        const currentuser = payload.user;
+        setuser(currentuser)
+        setloggedin(true)
       }
     }, []);
 
-    
+    console.log("two");
+
 
 ////// Login activity
     const login = (value) =>{
@@ -33,19 +43,6 @@ const Usercontext = ({children}) => {
         setloggedin(true)
     }
 
-    useEffect(()=>{
-      function refreshtoken(tok){
-        console.log(tok);
-        const base64Url = tok.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const payload = JSON.parse(atob(base64));
-        const currentuser = payload.user;
-        setuser(currentuser)
-        setloggedin(true)
-    }
-    refreshtoken(token)
-    },[token])
-    console.log(token);
 
 ///// logout Activity
     const logout = () =>{
@@ -54,6 +51,9 @@ const Usercontext = ({children}) => {
         setloggedin(false)
         navigate('/')
     }
+
+console.log("three");
+
 
     console.log(user);
 

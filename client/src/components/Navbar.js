@@ -6,7 +6,7 @@ import "../components/css/nav.css"
 export const Navbar = () => {
 
   const {loggedin, logout, user} = useContext(Authcontext)        
-
+  const [data, setdata] = useState(user)
   // const [user, setuser] = useState(null);
   // const [logged, setlogged] = useState(false);
 
@@ -77,7 +77,7 @@ export const Navbar = () => {
  
 //   useEffect(()=>{
 
-//     async function setter(){
+//     async function setter()
 //       console.log(token);
 //       const base64Url = token.split('.')[1];
 //       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

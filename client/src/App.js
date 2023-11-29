@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import { Usercontext } from './context/Usercontext'
+// import Prac from './Prac'
 // import "./app.css"
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/todo' element={<Tod/>} />
       </Routes>
     </Usercontext>
+    {/* <Prac/> */}
 
     </div>
   )
