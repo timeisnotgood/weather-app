@@ -12,12 +12,13 @@ export const Navbar = () => {
       <div >To - <samp style={{fontWeight:"500", fontSize:"17px" }} >We</samp></div>
       {loggedin ? (
         <div className='userin' >
+          <Link to={"/"} className='one' >About</Link>
+          <Link to={"/Home"} className='one' >Home</Link>
           {user && user.username}
           <button className='btn' onClick={logout}>Logout</button>
         </div>
       ) : (
         <div className='userout' >
-          <Link to={"/Home"} className='one' >Home</Link>
           <Link to={"/"} className='one' >About</Link>
           <Link to="/register" className='register' >Register</Link>
           <Link to="/login" className='login' >Login</Link>

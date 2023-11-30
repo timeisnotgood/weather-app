@@ -7,7 +7,7 @@ const router = express.Router()
 router.use(bodyParser.json());
 router.get('/get/:id', gettodo)
 router.post('/create/:id', createtodo)
-router.put('/update/:id', updatetodo)
+router.put('/update', updatetodo)
 router.delete('/delete', deletetodo)
 
 module.exports = router

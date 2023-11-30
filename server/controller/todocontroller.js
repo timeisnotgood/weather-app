@@ -30,20 +30,18 @@ const createtodo = asynchandler(async(req, res)=>{
 })
 
 // get to-do
-// route /todo/update:id
+// route /todo/update
 // private route
 
 const updatetodo = asynchandler(async(req, res)=>{
-    const id = req.params.id
-    const data = req.body
-
-    const update = await todo.updateOne({_id : id},{todo : data.todo})
+    const {_id, tod} = req.body   
+    
+    const update = await todo.updateOne({_id : _id},{todo : tod})
     res.send(update)
 })
 
 const deletetodo = asynchandler(async(req, res)=>{
     const id = req.body._id
-    
     const remove = await todo.deleteOne({_id : id})
     res.send(remove)
 })
