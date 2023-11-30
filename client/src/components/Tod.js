@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useContext} from 'react'
-import { Authcontext } from '../context/Usercontext';
+import React, {useState, useEffect} from 'react'
+
 
 
 export const Tod = () => {
@@ -33,6 +33,8 @@ export const Tod = () => {
     }
   },[user])
 
+// Insert Handler
+
   const submithandler = async(e) =>{
     e.preventDefault();
     const res = await fetch(`http://localhost:5001/todo/create/${user.id}`,{
@@ -45,6 +47,21 @@ export const Tod = () => {
 
     const data = await res.json()
     settodo([...todo, data])
+  }
+
+  const deletehandler = async(value, res) =>{
+    const del = await fetch(`http://localhost:5001/todo/delete`,{
+      method :"delete",
+      headers :
+      {
+        "content-type" : "application/json"
+      },
+      body : JSON.stringify({"_id" : value})
+    })
+
+    const data = await del.json()
+    console.log(data.acknowledged);
+    return data.acknowledged
   }
 
   return (
@@ -60,7 +77,13 @@ export const Tod = () => {
             {todo.map( to =>(
               <li key={to._id} >
               {to.todo}
-              <button>Delete</button>
+              <button onClick={()=>{
+                 const res = deletehandler(to._id)
+                 if(res){
+                  settodo(todo.filter( fil =>
+                  fil._id !== to._id
+                 ))}
+              }} >Delete</button>
               </li>
             ) )}
           </ul>
