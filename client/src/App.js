@@ -21,7 +21,7 @@ const App = () => {
  
   return (
     <div style={{height : "100vh", padding:"0px"}} >
-    <Usercontext>
+    {/* <Usercontext>
     <Navbar  />
       <Routes>
         <Route path='/' exact element={<About/>} />
@@ -31,8 +31,8 @@ const App = () => {
         <Route path='/todo' element={<Tod/>} />
         <Route path='/weather' element={<Weather/>} />
       </Routes>
-    </Usercontext>
-    {/* <Prac/> */}
+    </Usercontext> */}
+    <Weather/>
 
     </div>
   )
